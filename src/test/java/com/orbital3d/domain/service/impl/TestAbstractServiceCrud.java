@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public class TestAbstractServiceCrud {
   /** Empty service instance returning no repository. */
-  static class ShortService extends AbstractCrudService<TestEntity, Long> {
+  static class ShortService extends AbstractServiceCrud<TestEntity, Long> {
     @Override
     protected Optional<JpaRepository<TestEntity, Long>> getRepository() {
       return Optional.empty();
@@ -20,7 +20,7 @@ public class TestAbstractServiceCrud {
   /** Verify add(null) throws IllegalArgumentException. */
   @Test
   public void testAddThrowsIllegalArgumentEntityNull() {
-    AbstractCrudService<TestEntity, Long> serviceCrud =
+    AbstractServiceCrud<TestEntity, Long> serviceCrud =
         Mockito.mock(ShortService.class, CALLS_REAL_METHODS);
 
     // Verify add(null) throws IllegalArgumentException

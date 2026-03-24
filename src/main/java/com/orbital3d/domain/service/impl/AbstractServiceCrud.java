@@ -12,11 +12,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @param <T> Entity type
  * @param <ID> Entity id type
  */
-public abstract class AbstractCrudService<T extends DomainEntity<ID>, ID extends Number>
+public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID extends Number>
     implements ServiceCrud<T, ID> {
 
   /** Default construtor. */
-  public AbstractCrudService() {
+  public AbstractServiceCrud() {
     // Nothing
   }
 
