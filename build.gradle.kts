@@ -54,6 +54,11 @@ tasks.named("check") {
     dependsOn("spotlessCheck")
 }
 
+// Ensure code is formatted before build
+tasks.named("build") {
+	dependsOn("spotlessApply")
+}
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
