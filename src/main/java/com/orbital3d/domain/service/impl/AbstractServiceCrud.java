@@ -28,6 +28,17 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID extends
   protected abstract Optional<JpaRepository<T, ID>> getRepository();
 
   /**
+   * Acquires repository. Invokes {@link #getRepository()} and throws exception if not provided.
+   *
+   * @return Repository instance
+   * @throws IllegalArgumentException
+   */
+  private JpaRepository<T, ID> acquireRepository() {
+    return getRepository()
+        .orElseThrow(() -> new IllegalArgumentException("Repository not provided"));
+  }
+
+  /**
    * Verify the entity instance.
    *
    * @param entity Entity to check
@@ -91,8 +102,7 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID extends
   @Override
   public final T add(final T entity) {
     checkEntityIdNull(entity);
-    var repo = getRepository().orElseThrow(() -> new IllegalArgumentException("Repository null"));
-    return repo.save(entity);
+    return acquireRepository().save(entity);
   }
 
   // Null checked
@@ -100,8 +110,7 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID extends
   @Override
   public final Optional<T> find(final T entity) {
     checkEntityIdNotNull(entity);
-    var repo = getRepository().orElseThrow(() -> new IllegalArgumentException("Repository null"));
-    return repo.findById(entity.getId());
+    return acquireRepository().findById(entity.getId());
   }
 
   // Null checked
@@ -109,8 +118,7 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID extends
   @Override
   public final Optional<T> findById(final ID id) {
     validateNotNull(id);
-    var repo = getRepository().orElseThrow(() -> new IllegalArgumentException("Repository null"));
-    return repo.findById(id);
+    return acquireRepository().findById(id);
   }
 
   @Override

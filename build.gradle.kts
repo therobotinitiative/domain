@@ -2,6 +2,7 @@ plugins {
 	`java-library`
 	`maven-publish`
 	`checkstyle`
+	`jacoco`
 	id("com.diffplug.spotless") version "6.20.0"
 	id("io.spring.dependency-management") version "1.1.7"
 }

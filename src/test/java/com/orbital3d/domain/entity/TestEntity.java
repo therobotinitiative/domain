@@ -1,6 +1,4 @@
-package com.orbital3d.domain.service.impl;
-
-import com.orbital3d.domain.entity.DomainEntity;
+package com.orbital3d.domain.entity;
 
 /** Simple test entity implementing {@link DomainEntity}&lt;Long&gt; to ease testing. */
 public final class TestEntity implements DomainEntity<Long> {
