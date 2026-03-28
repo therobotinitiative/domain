@@ -24,8 +24,6 @@ checkstyle {
 
 spotless {
 	java {
-		// Use the Eclipse formatter profile included at repository root
-		// point to workspace-level formatter file (one level up from domain)
 		googleJavaFormat()
 		target("src/main/java/**/*.java", "src/test/java/**/*.java")
 		trimTrailingWhitespace()
