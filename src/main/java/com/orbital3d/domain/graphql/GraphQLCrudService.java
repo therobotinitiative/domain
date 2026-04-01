@@ -9,10 +9,9 @@ import java.util.function.Predicate;
  * GraphQL CRUD service.
  *
  * @param <T> Entity type
- * @param <I> Entity id type
+ * @param <ID> Entity id type
  */
-public interface GraphQLCrudService<T extends DomainEntity<I>, I extends Number>
-    extends ServiceCrud<T, I> {
+public interface GraphQLCrudService<T extends DomainEntity<ID>, ID> extends ServiceCrud<T, ID> {
 
   /**
    * Filter all with predicate.

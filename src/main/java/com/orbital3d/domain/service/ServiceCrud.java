@@ -10,7 +10,7 @@ import java.util.Optional;
  * @param <ID> Entity id type
  * @param <T> Entity type
  */
-public interface ServiceCrud<T extends DomainEntity<ID>, ID extends Number> {
+public interface ServiceCrud<T extends DomainEntity<ID>, ID> {
   /**
    * Persist entity.
    *

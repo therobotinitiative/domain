@@ -1,39 +1,40 @@
 package com.orbital3d.domain.service.impl;
 
 import com.orbital3d.domain.entity.DomainEntity;
+import com.orbital3d.domain.repository.DomainRepository;
 import com.orbital3d.domain.service.ServiceCrud;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Abstract JPA implementation of the {@link ServiceCrud}.
+ * Abstract implementation of the {@link ServiceCrud}. Client is responsible for providing
+ * technology specific {@link DomainRepository}.
  *
  * @param <T> Entity type
  * @param <ID> Entity id type
  */
-public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID extends Number>
+public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID>
     implements ServiceCrud<T, ID> {
 
-  /** Default construtor. */
+  /** Default constructor. */
   public AbstractServiceCrud() {
     // Nothing
   }
 
   /**
-   * Return {@link JpaRepository} to perform entity operations.
+   * Return {@link DomainRepository} to perform entity operations.
    *
-   * @return {@link JpaRepository} wrapped in {@link Optional}
+   * @return {@link DomainRepository} wrapped in {@link Optional}
    */
-  protected abstract Optional<JpaRepository<T, ID>> getRepository();
+  protected abstract Optional<DomainRepository<T, ID>> getRepository();
 
   /**
    * Acquires repository. Invokes {@link #getRepository()} and throws exception if not provided.
    *
    * @return Repository instance
-   * @throws IllegalArgumentException
+   * @throws IllegalArgumentException If repository not provided
    */
-  private JpaRepository<T, ID> acquireRepository() {
+  private DomainRepository<T, ID> acquireRepository() {
     return getRepository()
         .orElseThrow(() -> new IllegalArgumentException("Repository not provided"));
   }

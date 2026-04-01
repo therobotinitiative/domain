@@ -9,17 +9,17 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.orbital3d.domain.entity.TestEntity;
+import com.orbital3d.domain.repository.DomainRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /** Abstract base class for testing {@link AbstractServiceCrud}. */
 public abstract class AbstractCrudServiceBase {
-  @Spy protected JpaRepository<TestEntity, Long> mockRepository1;
+  @Spy protected DomainRepository<TestEntity, Long> mockRepository1;
 
-  @Spy protected JpaRepository<TestEntity, Long> mockRepository2;
+  @Spy protected DomainRepository<TestEntity, Long> mockRepository2;
 
   @Spy protected AbstractServiceCrud<TestEntity, Long> spyService1;
 

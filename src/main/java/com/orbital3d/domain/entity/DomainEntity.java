@@ -5,7 +5,7 @@ package com.orbital3d.domain.entity;
  *
  * @param <ID> Entity id type
  */
-public interface DomainEntity<ID extends Number> {
+public interface DomainEntity<ID> {
   /**
    * Get entity id.
    *
