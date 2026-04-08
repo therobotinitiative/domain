@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.orbital3d"
-version = "0.0.2-SNAPSHOT"
+version = "1.0-RELEASE"
 
 java {
 	toolchain {
