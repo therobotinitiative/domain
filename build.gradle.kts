@@ -8,7 +8,7 @@ plugins {
 	id("org.owasp.dependencycheck") version "12.2.0"
 }
 
-group = "com.orbital3d"
+group = "org.codebreaker"
 version = "1.0-RELEASE"
 
 java {
