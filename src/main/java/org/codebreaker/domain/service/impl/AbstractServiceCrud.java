@@ -98,38 +98,35 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID>
     }
   }
 
-  // Null checked
-  @SuppressWarnings("null")
+  /** {@inheritDoc} */
   @Override
   public final T add(final T entity) {
     checkEntityIdNull(entity);
     return acquireRepository().save(entity);
   }
 
-  // Null checked
-  @SuppressWarnings("null")
+  /** {@inheritDoc} */
   @Override
   public final Optional<T> find(final T entity) {
     checkEntityIdNotNull(entity);
     return acquireRepository().findById(entity.getId());
   }
 
-  // Null checked
-  @SuppressWarnings("null")
+  /** {@inheritDoc} */
   @Override
   public final Optional<T> findById(final ID id) {
     validateNotNull(id);
     return acquireRepository().findById(id);
   }
 
+  /** {@inheritDoc} */
   @Override
   public final List<T> findAll() {
     var repo = getRepository().orElseThrow(() -> new IllegalArgumentException("Repository null"));
     return repo.findAll();
   }
 
-  // Null checked
-  @SuppressWarnings("null")
+  /** {@inheritDoc} */
   @Override
   public final T update(final T entity) {
     checkEntityIdNotNull(entity);
@@ -137,8 +134,7 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID>
     return repo.save(entity);
   }
 
-  // Null checked
-  @SuppressWarnings("null")
+  /** {@inheritDoc} */
   @Override
   public final boolean delete(final T entity) {
     checkEntityIdNotNull(entity);
@@ -147,8 +143,7 @@ public abstract class AbstractServiceCrud<T extends DomainEntity<ID>, ID>
     return true;
   }
 
-  // Null checked
-  @SuppressWarnings("null")
+  /** {@inheritDoc} */
   @Override
   public final boolean deleteById(final ID id) {
     validateNotNull(id);
